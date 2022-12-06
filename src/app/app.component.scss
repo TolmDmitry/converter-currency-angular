@@ -1,0 +1,12 @@
+.wrapper {
+  height: calc(100vh - 175px);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+app-currency-item {
+  margin: 20px;
+}

@@ -1,0 +1,15 @@
+<app-main-header [actualExchangeRate]="actualExchangeRates()"></app-main-header>
+<section class="wrapper">
+  <app-currency-item
+    [currencies]="(exchangeStore.exchangeRates$ | async)!"
+    (selectCurrency)="selectHandler($event, 1)"
+    [rate]="secondCurrency"
+    [exchangeValue]="secondValue"
+  ></app-currency-item>
+  <app-currency-item
+    [currencies]="(exchangeStore.exchangeRates$ | async)!"
+    (selectCurrency)="selectHandler($event, 2)"
+    [rate]="firstCurrency"
+    [exchangeValue]="firstValue"
+  ></app-currency-item>
+</section>

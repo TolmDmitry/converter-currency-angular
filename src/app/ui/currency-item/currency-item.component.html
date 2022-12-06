@@ -1,0 +1,25 @@
+<div class="container">
+  <select [(ngModel)]="currencyRate" (change)="onSelect(true)">
+    <option *ngFor="let currency of currencies" [value]="currency.rate">
+      {{ currency.txt }} ({{ currency.cc }})
+    </option>
+  </select>
+  <ng-container *ngIf="currencyRate && rate; else chooseCurrency">
+    <label for="currencyValue">Amount:</label>
+    <input
+      #test
+      name="currencyValue"
+      type="number"
+      min="0"
+      onkeypress="return event.charCode >= 32 && event.charCode <= 57 || event.charCode !== 189 || event.charCode !== 189"
+      [(ngModel)]="currencyValue"
+      [value]="(exchangeValue * +(rate / currencyRate)).toFixed(2)"
+      (keyup)="onSelect(false)"
+    />
+  </ng-container>
+  <ng-template #chooseCurrency>
+    <span>{{
+      currencyRate ? "Choose second currency" : "Choose currencies"
+    }}</span>
+  </ng-template>
+</div>
